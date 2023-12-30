@@ -1,9 +1,9 @@
-# MOOD iOS APP
+# MOOD
 #### Video Demo:  <URL HERE>
 #### Description:
 ##### Summary
 
-Mood is a CS50 final project inspired by existing health and mental wellness apps. It is designed and developed by Daniel Roos from Germany mainly using Xcode, SwiftUI, SQLite for data management, and SwiftCharts for data visualization.
+Mood is an iOS app inspired by existing health and mental wellness apps. It is designed and developed by Daniel Roos from Germany mainly using Xcode, SwiftUI, SQLite for data management, and SwiftCharts for data visualization.
 
 Apart from SQLite, I never used any of the aforementioned tools before, so it was a great additional learning experience that taking CS50 enabled.
 
@@ -47,15 +47,16 @@ This view was great to get familiar with additional SwiftUI elements like the sl
 
 MoodLogView has **three main purposes:**
 
-First, it uses SwiftCharts to visulize moods logged by users in a chart using point and line marks (in the next version of this app, the point marks will be colored in the respective moods colors from the LogMoodView). The chart allows users to see how their mood has developed over time. The current version visualizes mood data for a full week by days (visualizing mood data for a full month by weeks and for a full year by month will come in the next version of this app). The chart currently display data for the week of 25-31 Dec 2023. Functionality to scroll through the chart horizontally has already been put in place (the required database-related functions to fetch data for a longer time period will come in the next version of this app).
+First, it uses SwiftCharts to visulize moods logged by users in a chart using point and line marks (in the next version of this app, the point marks will be colored in the respective moods colors from the LogMoodView). The chart fetches data from the SQL database and populates the chart with a "For each" loop. The chart allows users to see how their mood has developed over time. The current version visualizes mood data for a full week by days (visualizing mood data for a full month by weeks and for a full year by month will come in the next version of this app). The chart currently displays data for the week of 25-31 Dec 2023. Functionality to scroll through the chart horizontally to display additional weeks has already been put in place (the required database-related functions to fetch data for a longer time period will come in the next version of this app).
 
 Second, it also shows the two placeholder highlights cards supposed to show analytics-based insights and recommendations on how to improve users' moods (once this feature is added). The ideas is to use statictics (and later machine learning) to understand a user's mood patterns over time and provide recommendations on how to improve their mood.
 
 Third, when users tap the "View data" button, a sheet showing the DataView slides up from the bottom in a modal presentation on top of the MoodLogView (DataView is explained in more detail below).
 
-The MoodLogView was great to get familiar with 
-
+The MoodLogView was great to get familiar with SwiftCharts for data visualization as well as additional SwiftUI elements like pickers and modal sheets.
 
 ###### DataView
+
+
 
 ##### DatabaseManager file

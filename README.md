@@ -41,7 +41,7 @@ LogMoodView allows users to indicate how they have felt overall on any given day
 
 When users tap the "Log mood" button, the selected moods gets inserted into a SQL database table along with a unique ID, a default user ID (i.e. 1), a timestampe of the current date and time, as well as the mood being an integer from 1 (very unpleasant) to 5 (very pleasant).
 
-This view was great to get familiar with additional SwiftUI elements like the slider, @State variables and functions to control the color of the blurred sphere depending on the mood. 
+LogMoodView was great to get familiar with additional SwiftUI elements like the slider, @State variables and functions to control the color of the blurred sphere depending on the mood. 
 
 ###### MoodLogView
 
@@ -51,12 +51,32 @@ First, it uses SwiftCharts to visulize moods logged by users in a chart using po
 
 Second, it also shows the two placeholder highlights cards supposed to show analytics-based insights and recommendations on how to improve users' moods (once this feature is added). The ideas is to use statictics (and later machine learning) to understand a user's mood patterns over time and provide recommendations on how to improve their mood.
 
-Third, when users tap the "View data" button, a sheet showing the DataView slides up from the bottom in a modal presentation on top of the MoodLogView (DataView is explained in more detail below).
+Third, when users tap the "View data" button, a sheet showing the DataView slides up from the bottom in a modal presentation on top of MoodLogView either covering 50% of MoodLogView or the entire view (DataView is explained in more detail below).
 
-The MoodLogView was great to get familiar with SwiftCharts for data visualization as well as additional SwiftUI elements like pickers and modal sheets.
+MoodLogView was great to get familiar with SwiftCharts for data visualization as well as additional SwiftUI elements like pickers and modal sheets.
 
 ###### DataView
 
+DataView has **three main purposes:**
 
+First, it shows users a list of the mood data logged in the SQL database including the date and the mood integer to quickly browse through. Users can also delete individual rows in the list, if data was logged incorrectly.
+
+Second and primarly for app testing purposes, it provides the ability to delete all mood data from the SQL database that has been stored so far. When the "Delete all data button" is tapped, an alert is being shown to double-check users' intention in order to prevent users from accidentally deleting all data.
+
+Third and again primarily for app testing purposes, it provides the ability to create a test mood data set. When tapping the "Create new data set" button, any previously stores mood data is deleted first and then randomized mood data is stored in the SQL database for the full month of December 2023. Both  MoodLogView as well as HomeView automatically update the SwiftCharts when a new data set has been created.
+
+DataView was great to get familiar with building lists with "For each" loops, as well as with handling SQL database queries that allow to delete or create data.
 
 ##### DatabaseManager file
+
+Everything realted to the SQL database is managed in the DatabaseManager file.
+Main functions include:
+1. Opening the database, creating a moodTracker table with the columns outlined under LogMoodView, and initializing the the database connection.
+2. Defining the struct MoodData.
+3. Logging a mood to the database table based on users' input.
+4. Fetching mood data from the database table to display it in the charts and the list.
+5. Creating a test data set with random mood integers.
+6. Deleting individual rows from the table, all data from the table, and the entire table.
+
+It was great to strengthen my SQL knowledge acquired through CS50.
+

@@ -69,7 +69,7 @@ DataView was great to get familiar with building lists with "For each" loops, as
 
 ##### DatabaseManager file
 
-Everything realted to the SQL database is managed in the DatabaseManager file.
+Everything related to the SQL database is managed in the DatabaseManager file.
 Main functions include:
 1. Opening the database, creating a moodTracker table with the columns outlined under LogMoodView, and initializing the database connection.
 2. Defining the struct MoodData.

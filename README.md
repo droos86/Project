@@ -27,8 +27,10 @@ This view was great to get familiar with SwiftUI's main UI principles ZStack, VS
 
 ###### HomeView
 
-HomeView continues using the blurred sphere as a graphical continuation and has two main purposes.
+HomeView continues using the blurred sphere as a graphical continuation and has **two main purposes:**
+
 First, it provides the user with information about the app and its main features.
+
 Second, it shows highlights around the users' mood in the current week using a simplified SwiftChart as well as two placeholder cards supposed to show analytics-based insights and recommendations on how to improve users' moods (once this feature is added). Users can tap on the highlights cards to jump directly to the respective features in the app.
 
 HomeView also introduces a toolbar at the top and one at the bottom. The bottom toolbar has three elements allowing users to navigate throughout the apps main views and features. It was a great way to get familiar with SwiftUI's navigation and toolbar logic.
@@ -43,6 +45,15 @@ This view was great to get familiar with additional SwiftUI elements like the sl
 
 ###### MoodLogView
 
+MoodLogView has **three main purposes:**
+
+First, it uses SwiftCharts to visulize moods logged by users in a chart using point and line marks (in the next version of this app, the point marks will be colored in the respective moods colors from the LogMoodView). The chart allows users to see how their mood has developed over time. The current version visualizes mood data for a full week by days (visualizing mood data for a full month by weeks and for a full year by month will come in the next version of this app). The chart currently display data for the week of 25-31 Dec 2023. Functionality to scroll through the chart horizontally has already been put in place (the required database-related functions to fetch data for a longer time period will come in the next version of this app).
+
+Second, it also shows the two placeholder highlights cards supposed to show analytics-based insights and recommendations on how to improve users' moods (once this feature is added). The ideas is to use statictics (and later machine learning) to understand a user's mood patterns over time and provide recommendations on how to improve their mood.
+
+Third, when users tap the "View data" button, a sheet showing the DataView slides up from the bottom in a modal presentation on top of the MoodLogView (DataView is explained in more detail below).
+
+The MoodLogView was great to get familiar with 
 
 
 ###### DataView

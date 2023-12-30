@@ -63,7 +63,7 @@ First, it shows users a list of the mood data logged in the SQL database includi
 
 Second and primarly for app testing purposes, it provides the ability to delete all mood data from the SQL database that has been stored so far. When the "Delete all data button" is tapped, an alert is being shown to double-check users' intention in order to prevent users from accidentally deleting all data.
 
-Third and again primarily for app testing purposes, it provides the ability to create a test mood data set. When tapping the "Create new data set" button, any previously stores mood data is deleted first and then randomized mood data is stored in the SQL database for the full month of December 2023. Both  MoodLogView as well as HomeView automatically update the SwiftCharts when a new data set has been created.
+Third and again primarily for app testing purposes, it provides the ability to create a test mood data set. When tapping the "Create new data set" button, any previously stored mood data is deleted first and then randomized mood data is stored in the SQL database for the full month of December 2023. Both  MoodLogView as well as HomeView automatically update the SwiftCharts when a new data set has been created.
 
 DataView was great to get familiar with building lists with "For each" loops, as well as with handling SQL database queries that allow to delete or create data.
 
@@ -71,7 +71,7 @@ DataView was great to get familiar with building lists with "For each" loops, as
 
 Everything realted to the SQL database is managed in the DatabaseManager file.
 Main functions include:
-1. Opening the database, creating a moodTracker table with the columns outlined under LogMoodView, and initializing the the database connection.
+1. Opening the database, creating a moodTracker table with the columns outlined under LogMoodView, and initializing the database connection.
 2. Defining the struct MoodData.
 3. Logging a mood to the database table based on users' input.
 4. Fetching mood data from the database table to display it in the charts and the list.

@@ -105,7 +105,7 @@ struct HomeView: View {
                                             .foregroundColor(.gray)
                                             .labelStyle(.iconOnly)
                                         
-                                        Text("Use analytics-based insights and recommendations to improve your mood over time.")
+                                        Text("Use analytics-based insights and recommendations to improve your mood.")
                                             .font(.caption)
                                             .foregroundColor(.white)
                                     }

@@ -62,6 +62,14 @@ class DatabaseManager: ObservableObject {
     }
 
     
+    struct MoodData {
+        var id: Int64
+        var userId: Int64
+        var date: Date
+        var mood: Int64
+    }
+    
+    
     func logMood(user_id: Int, mood: Int) {
         do {
             let dateFormatter = DateFormatter()
@@ -82,58 +90,11 @@ class DatabaseManager: ObservableObject {
             print("Error logging mood: \(error)")
         }
     }
-    
-    
-    struct MoodData {
-        var id: Int64
-        var userId: Int64
-        var date: Date
-        var mood: Int64
-    }
-
-//    func fetchAllMoodData() {
-//        do {
-//            let moodData = try db?.prepare("SELECT * FROM moodTracker")
-//
-//            for row in moodData! {
-//                let id = row[0] as! Int64
-//                let userId = row[1] as! Int64
-//                let date = row[2] as! String
-//                let mood = row[3] as! Int64
-//
-//                print("ID: \(id), User ID: \(userId), Date: \(date), Mood: \(mood)")
-//            }
-//        } catch {
-//            print("Error fetching data: \(error)")
-//        }
-//    }
-    
-//    func fetchAllMoodData() -> [MoodData] {
-//        var moodDataArray: [MoodData] = []
-//
-//        do {
-//            let moodData = try db?.prepare("SELECT * FROM moodTracker")
-//
-//            for row in moodData! {
-//                let id = row[0] as! Int64
-//                let userId = row[1] as! Int64
-//                let date = row[2] as! String
-//                let mood = row[3] as! Int64
-//
-//                let moodDataEntry = MoodData(id: id, userId: userId, date: date, mood: mood)
-//                moodDataArray.append(moodDataEntry)
-//            }
-//        } catch {
-//            print("Error fetching data: \(error)")
-//        }
-//
-//        return moodDataArray
-//    }
-    
+       
     
     func fetchAllMoodData() {
         do {
-            print("Fetching data...")
+//            print("Fetching data...")
             
             if let moodDataResult = try db?.prepare("SELECT id, user_id, DATE(date) AS date, mood FROM moodTracker") {
                 var updatedMoodData: [MoodData] = []
@@ -152,12 +113,12 @@ class DatabaseManager: ObservableObject {
                     }
                 }
 
-                print("Fetched \(updatedMoodData.count) rows from the database.")
+//                print("Fetched \(updatedMoodData.count) rows from the database.")
 
                 // Update the @Published property
                 DispatchQueue.main.async {
                     self.moodData = updatedMoodData
-                    print("Updated mood data. Count: \(self.moodData.count)")
+//                    print("Updated mood data. Count: \(self.moodData.count)")
                 }
             }
         } catch {
@@ -233,7 +194,7 @@ class DatabaseManager: ObservableObject {
                 WHERE date BETWEEN ? AND ?
             """, startDateString, endDateString)
 
-            print("SQL Query: SELECT * FROM moodTracker WHERE date BETWEEN '\(startDateString)' AND '\(endDateString)'")
+//            print("SQL Query: SELECT * FROM moodTracker WHERE date BETWEEN '\(startDateString)' AND '\(endDateString)'")
             
             var moodDataArray: [MoodData] = []
 
@@ -250,7 +211,7 @@ class DatabaseManager: ObservableObject {
                 }
             }
             
-            print("Fetched \(moodDataArray.count) rows from the database.")
+//            print("Fetched \(moodDataArray.count) rows from the database.")
             
             return moodDataArray
         } catch {

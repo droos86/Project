@@ -25,9 +25,9 @@ struct DataView: View {
                 }
                 .onAppear {
                     // Fetch mood data when the view appears
-                    print("Fetching data...")
+//                    print("Fetching data...")
                     databaseManager.fetchAllMoodData()
-                    print("DataView displayed. Mood data count: \(databaseManager.moodData.count)")
+//                    print("DataView displayed. Mood data count: \(databaseManager.moodData.count)")
                 }
             }
             .navigationBarTitle("Data")

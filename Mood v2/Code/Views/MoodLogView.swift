@@ -1,199 +1,299 @@
-//
-//  MoodLogView.swift
-//  Mood v2
-//
-//  Created by Daniel Roos on 15.12.23.
-//
-
 import SwiftUI
 import Charts
 import Foundation
 
 struct MoodLogView: View {
     @State private var selectedOption: String = "W"
-        let options = ["W", "M", "Y"]
+    @State private var showingDataSheet = false
+    @State private var date = Date()
+    @ObservedObject var databaseManager = DatabaseManager.shared
     
-    let moodDay: [moodDay] = [
-        .init(date: Date.from(year: 2023, month: 12, day: 11), moodRating: 3),
-        .init(date: Date.from(year: 2023, month: 12, day: 12), moodRating: 4),
-        .init(date: Date.from(year: 2023, month: 12, day: 13), moodRating: 2),
-        .init(date: Date.from(year: 2023, month: 12, day: 14), moodRating: 1),
-        .init(date: Date.from(year: 2023, month: 12, day: 15), moodRating: 1),
-        .init(date: Date.from(year: 2023, month: 12, day: 16), moodRating: 5),
-        .init(date: Date.from(year: 2023, month: 12, day: 17), moodRating: 2),
-    ]
+    let options = ["W", "M", "Y"]
+    let numberOfDisplayDays = 7
     
     var body: some View {
-        ZStack {
-            Color(red: 0/255, green: 0/255, blue: 0/255) // Black
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack(alignment: .leading) {
-                Text("Mood log")
-                    .font(.title)
-                    .bold()
-                    .foregroundColor(.white)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+        NavigationView {
+            ZStack {
+                Color(.black)
+                    .edgesIgnoringSafeArea(.all)
                 
-                // Adapt style to black background
-                Picker("Select an option", selection: $selectedOption) {
-                    ForEach(options, id: \.self) { option in
-                        Text(option)
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding(.bottom, 10)
-                
-                // Automate date for current week / month / year
-                Text("WEEK")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-                    .bold()
-                
-                HStack {
-                    Text("11-17 Dec 2023")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                        .bold()
+                ScrollView {
+                    VStack(alignment: .leading) {
+                                                
+                        Picker("Select an option", selection: $selectedOption) {
+                            ForEach(options, id: \.self) { option in
+                                Text(option)
+                            }
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .padding(.top, 10)
                         .padding(.bottom, 10)
-                    
-                    Spacer()
-                    
+                        .colorScheme(.dark)
+                        
+                        Text("WEEK")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                            .bold()
+                        
+                        Text("25-31 Dec 2023")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                            .bold()
+                            .padding(.bottom, 10)
+                        
+                        Chart {
+                            ForEach(databaseManager.fetchMoodDataForWeek(), id: \.id) { moodData in
+//                            ForEach(databaseManager.fetchAllMoodData(), id: \.id) { moodData in
+                                PointMark(
+                                    x: .value("Day", moodData.date, unit: .day),
+                                    y: .value("Mood", moodData.mood)
+                                )
+                                .foregroundStyle(.white)
+
+                                LineMark(
+                                    x: .value("Day", moodData.date, unit: .day),
+                                    y: .value("Mood", moodData.mood)
+                                )
+                                .interpolationMethod(.stepCenter)
+                                .lineStyle(StrokeStyle(lineWidth: 2))
+//                                .lineStyle(StrokeStyle(lineWidth: 2, dash: [3]))
+                                .foregroundStyle(.white)
+                            }
+                        }
+                        .onAppear {
+                            print("Chart appeared. Fetching mood data...")
+                            let fetchedData = databaseManager.fetchMoodDataForWeek()
+//                            let fetchedData = databaseManager.fetchAllMoodData()
+                            print("Fetched \(fetchedData.count) rows from the database.")
+                        }
+                        .onChange(of: databaseManager.moodData) { _ in
+                            print("Mood data changed. Count: \(databaseManager.moodData.count)")
+                        }
+                        .chartScrollableAxes(.horizontal)
+                        .chartXVisibleDomain(length: 3600 * 24 * numberOfDisplayDays)
+                        .chartLegend(.hidden)
+                        .frame(height: 180)
+                        .chartYAxis {
+                            AxisMarks(
+                                values: [1]
+                            ) {
+                                AxisValueLabel {
+                                    Text("""
+                                        Very
+                                        unpleasant
+                                        """
+                                    )
+                                }
+                                .font(.caption)
+                                .foregroundStyle(.gray)
+                            }
+                            
+                            AxisMarks(
+                                values: [3]
+                            ) {
+                                AxisValueLabel {
+                                    Text("""
+                                        Neutral
+                                        """
+                                    )
+                                }
+                                .font(.caption)
+                                .foregroundStyle(.gray)
+                            }
+                            
+                            AxisMarks(
+                                values: [5]
+                            ) {
+                                AxisValueLabel {
+                                    Text("""
+                                        Very
+                                        pleasant
+                                        """
+                                    )
+                                }
+                                .font(.caption)
+                                .foregroundStyle(.gray)
+                            }
+                            
+                            AxisMarks(
+                                values: [1, 2, 3, 4, 5]
+                            ) {
+                                AxisGridLine()
+                                    .foregroundStyle(.gray)
+                            }
+                        }
+                        .chartYScale(domain: 1 ... 5)
+                        .chartXAxis {
+                            AxisMarks(values: .stride(by: .day, count: 1)) {
+                                AxisGridLine()
+                                    .foregroundStyle(.gray)
+                                AxisTick()
+                                    .foregroundStyle(.gray)
+                                AxisValueLabel(format: .dateTime.weekday())
+                                    .font(.caption)
+                                    .foregroundStyle(.gray)
+                            }
+                        }
+                        .padding(.bottom, 10)
+                        
+                        // Automate with analyses of mood data patterns
+                        ZStack {
+                            Rectangle()
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .foregroundColor(Color(red: 28/255, green: 28/255, blue: 30/255))
+                                .padding(EdgeInsets(top: 10, leading: -16, bottom: -500, trailing: -16))
+                                .edgesIgnoringSafeArea(.all)
+                            
+                            VStack (alignment: .leading){
+                                HStack (alignment: .bottom){
+                                    Text("Highlights")
+                                        .font(.title2)
+                                        .foregroundColor(.white)
+                                        .bold()
+                                        .padding(.top, 40)
+                                    
+                                    Spacer()
+                                    
+                                    Button(action: {
+                                        showingDataSheet.toggle()
+                                    }) {
+                                        Text("View data")
+                                            .font(.headline)
+                                            .fontWeight(.regular)
+                                            .foregroundColor(.blue)
+                                    }
+                                }
+                                
+                                ZStack (alignment: .leading) {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                        .foregroundColor(Color(red: 44/255, green: 44/255, blue: 46/255))
+                                    
+                                    
+                                    VStack (alignment: .leading, spacing: 10) {
+                                        Label("Insights", systemImage: "lightbulb.fill")
+                                            .font(.headline)
+                                            .foregroundColor(.blue)
+                                            .padding(.top, 10)
+                                        
+                                        Text("To come in next version.")
+                                            .font(.subheadline)
+                                            .foregroundColor(.white)
+                                            .bold()
+                                            .padding(.bottom, 30)
+                                        
+                                        Spacer()
+                                    }
+                                    .padding(.horizontal, 16)
+                                }
+                                
+                                Spacer()
+                                
+                                ZStack (alignment: .leading) {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                        .foregroundColor(Color(red: 44/255, green: 44/255, blue: 46/255))
+                                    
+                                    VStack (alignment: .leading, spacing: 10) {
+                                        Label("Recommendations", systemImage: "exclamationmark.circle.fill")
+                                            .font(.headline)
+                                            .foregroundColor(.blue)
+                                            .padding(.top, 10)
+                                        
+                                        Text("To come in next version.")
+                                            .font(.subheadline)
+                                            .foregroundColor(.white)
+                                            .bold()
+                                            .padding(.bottom, 30)
+                                        
+                                        Spacer()
+                                    }
+                                    .padding(.horizontal, 16)
+                                }
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                }
+            }
+            .navigationBarTitle("Mood log")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: HomeView()) {
                         Text("Done")
+                            .font(.headline)
                             .bold()
                             .foregroundColor(.blue)
                     }
                 }
-                
-                
-                // Forn month and year add AreaMark for min and max and LineMark for average of weeks and months respectively
-                
-                
-                Chart {
-                    ForEach(moodDay) { moodDay in
-                        LineMark(
-                            x: .value("Day", moodDay.date, unit: .day),
-                            y: .value("Mood", moodDay.moodRating)
-                        )
-                        .symbol(.circle)
-                    }
-                }
-                .frame(height: 200)
-                .chartYAxis {
-                    AxisMarks(values: moodDay.map { $0.moodRating }) { moodRating in
-                        AxisGridLine()
-                            .foregroundStyle(.gray)
-                        // Improve so it always shows labels 1-5
-                        // Convert ints to strings / moodDescriptions
-                        AxisValueLabel()
-                        // {
-                            // switch AxisValue.self {
-                            // case 1:
-                                // Text("Very Unpleasant")
-                            // case 2:
-                                // Text("Unpleasant")
-                            // case 3:
-                                // Text("Neutral")
-                            // case 4:
-                                // Text("Pleasant")
-                            // case 5:
-                                // Text("Very Pleasant")
-                            // default:
-                                // EmptyView()
-                            // }
-                        // }
-                        .font(.caption)
-                        .foregroundStyle(.gray)
-                    }
-                }
-                .chartYScale(domain: 1 ... 5)
-                .chartXAxis {
-                    AxisMarks(values: moodDay.map { $0.date }) { date in
-                        AxisGridLine()
-                            .foregroundStyle(.gray)
-                        AxisTick()
-                            .foregroundStyle(.white)
-                        AxisValueLabel(format: .dateTime.weekday())
-                            .font(.caption)
-                            .foregroundStyle(.gray)
-                    }
-                }
-                .chartPlotStyle { plotContent in
-                    plotContent
-                        
-                }
-                // Format x-axis to show days / weeks / months
-                // Format y-axis to show moodDescriptions instead of moodRatings
-                
-                // Automate with analyses of mood data patterns
-                ZStack {
-                    Text("")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Color(red: 28/255, green: 28/255, blue: 30/255))
-                        .padding(EdgeInsets(top: 10, leading: -16, bottom: 0, trailing: -16))
-                    
-                    VStack (alignment: .leading){
-                        Text("Highlights")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .bold()
-                            .padding(.top, 40)
-                        
-                        ZStack (alignment: .leading) {
-                            Text("")
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
-                                .background(Color(red: 58/255, green: 58/255, blue: 60/255))
-                                .cornerRadius(10)
-                                .font(.headline)
-                                .foregroundColor(.white)
-                            
-                            VStack (alignment: .leading, spacing: 10) {
-                                HStack {
-                                    Label("Insights", systemImage: "lightbulb.fill")
-                                        .font(.headline)
-                                        .foregroundColor(.blue)
-                                        .padding(.top, 10)
-                                }
-                                
-                                Text("Insights based on mood patterns.")
-                                    .font(.subheadline)
-                                    .foregroundColor(.white)
-                                
-                                Spacer()
+            }
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    HStack {
+                        NavigationLink(destination: HomeView()) {
+                            Label {
+                                Text("Home")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                            } icon: {
+                                Image(systemName: "house.fill")
+                                    .foregroundColor(.gray)
                             }
-                            .padding(.horizontal, 16)
+                            .labelStyle(VerticalLabelStyle())
+                        }
+                        
+                        Spacer()
+                        
+                        NavigationLink(destination: LogMoodView()) {
+                            Label {
+                                Text("Log mood")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                            } icon: {
+                                Image(systemName: "plus.app.fill")
+                                    .foregroundColor(.gray)
+                            }
+                            .labelStyle(VerticalLabelStyle())
+                        }
+                        
+                        Spacer()
+                        
+                        NavigationLink(destination: MoodLogView()) {
+                        Label {
+                            Text("View log")
+                                .font(.caption)
+                                .foregroundColor(.blue)
+                        } icon: {
+                            Image(systemName: "chart.xyaxis.line")
+                                .foregroundColor(.blue)
+                        }
+                        .labelStyle(VerticalLabelStyle())
                         }
                     }
+                    .padding(.horizontal, 16)
                 }
-                    
-                
-                
-                
-                // Automate with recommendations for identified mood patters
-                
             }
-            .padding(.horizontal, 16)
+            .toolbarColorScheme(.dark)
+            .toolbarBackground(.ultraThinMaterial)
         }
+        .colorScheme(.dark)
+        .navigationBarBackButtonHidden(true)
+        .sheet(isPresented: $showingDataSheet,
+               onDismiss: {
+            print("Sheet dismissed")
+        },
+        content: {
+            DataView()
+                .presentationDetents([.large, .medium])
+                .presentationContentInteraction(.scrolls)
+        })
     }
 }
 
-struct moodDay: Identifiable {
-    let id = UUID()
-    let date: Date
-    let moodRating: Int
-}
-
-extension Date {
-    static func from(year: Int, month: Int, day: Int) -> Date {
-        let components = DateComponents(year: year, month: month, day: day)
-        return Calendar.current.date(from: components)!
-    }
-}
 
 struct MoodLogView_Previews: PreviewProvider {
     static var previews: some View {
         MoodLogView()
     }
 }
+

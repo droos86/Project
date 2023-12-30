@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D10CF0E2B32F9BA003C3F67 /* MoodLogView_Alt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D10CF0D2B32F9BA003C3F67 /* MoodLogView_Alt.swift */; };
+		1D2E789E2B3C1F8B0002136F /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 1D2E789D2B3C1F8B0002136F /* SQLite */; };
+		1D2E78A02B3C22A80002136F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E789F2B3C22A80002136F /* DatabaseManager.swift */; };
 		1D4D3AF62B2A090100E7BC9F /* Mood_v2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4D3AF52B2A090100E7BC9F /* Mood_v2App.swift */; };
 		1D4D3AF82B2A090100E7BC9F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4D3AF72B2A090100E7BC9F /* ContentView.swift */; };
 		1D4D3AFA2B2A090500E7BC9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D4D3AF92B2A090500E7BC9F /* Assets.xcassets */; };
@@ -17,11 +18,10 @@
 		1D4D3B0D2B2A090600E7BC9F /* Mood_v2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4D3B0C2B2A090600E7BC9F /* Mood_v2Tests.swift */; };
 		1D4D3B172B2A090600E7BC9F /* Mood_v2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4D3B162B2A090600E7BC9F /* Mood_v2UITests.swift */; };
 		1D4D3B192B2A090600E7BC9F /* Mood_v2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4D3B182B2A090600E7BC9F /* Mood_v2UITestsLaunchTests.swift */; };
-		1D5E6DA22B2C98D6002FA055 /* MoodLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E6DA12B2C98D6002FA055 /* MoodLogView.swift */; };
-		1DFE3A6D2B2C4319007C22C0 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFE3A6C2B2C4319007C22C0 /* SignInView.swift */; };
-		1DFE3A6F2B2C43C5007C22C0 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFE3A6E2B2C43C5007C22C0 /* SignUpView.swift */; };
-		1DFE3A722B2C445D007C22C0 /* MoodTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFE3A712B2C445D007C22C0 /* MoodTrackerView.swift */; };
-		1DFE3A762B2C450D007C22C0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFE3A752B2C450D007C22C0 /* HomeView.swift */; };
+		1D50F19B2B3D835E006EA110 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D50F19A2B3D835E006EA110 /* HomeView.swift */; };
+		1D50F19D2B3DB713006EA110 /* LogMoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D50F19C2B3DB713006EA110 /* LogMoodView.swift */; };
+		1D50F1A12B3DC551006EA110 /* MoodLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D50F1A02B3DC551006EA110 /* MoodLogView.swift */; };
+		1D50F1A42B3EC203006EA110 /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D50F1A32B3EC203006EA110 /* DataView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1D10CF0D2B32F9BA003C3F67 /* MoodLogView_Alt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodLogView_Alt.swift; sourceTree = "<group>"; };
+		1D2E789F2B3C22A80002136F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		1D4D3AF22B2A090100E7BC9F /* Mood v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mood v2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D4D3AF52B2A090100E7BC9F /* Mood_v2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood_v2App.swift; sourceTree = "<group>"; };
 		1D4D3AF72B2A090100E7BC9F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,11 +56,10 @@
 		1D4D3B122B2A090600E7BC9F /* Mood v2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mood v2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D4D3B162B2A090600E7BC9F /* Mood_v2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood_v2UITests.swift; sourceTree = "<group>"; };
 		1D4D3B182B2A090600E7BC9F /* Mood_v2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood_v2UITestsLaunchTests.swift; sourceTree = "<group>"; };
-		1D5E6DA12B2C98D6002FA055 /* MoodLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodLogView.swift; sourceTree = "<group>"; };
-		1DFE3A6C2B2C4319007C22C0 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		1DFE3A6E2B2C43C5007C22C0 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		1DFE3A712B2C445D007C22C0 /* MoodTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodTrackerView.swift; sourceTree = "<group>"; };
-		1DFE3A752B2C450D007C22C0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1D50F19A2B3D835E006EA110 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1D50F19C2B3DB713006EA110 /* LogMoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMoodView.swift; sourceTree = "<group>"; };
+		1D50F1A02B3DC551006EA110 /* MoodLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodLogView.swift; sourceTree = "<group>"; };
+		1D50F1A32B3EC203006EA110 /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D2E789E2B3C1F8B0002136F /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,12 +167,11 @@
 			isa = PBXGroup;
 			children = (
 				1D4D3AF72B2A090100E7BC9F /* ContentView.swift */,
-				1DFE3A752B2C450D007C22C0 /* HomeView.swift */,
-				1DFE3A6C2B2C4319007C22C0 /* SignInView.swift */,
-				1DFE3A6E2B2C43C5007C22C0 /* SignUpView.swift */,
-				1DFE3A712B2C445D007C22C0 /* MoodTrackerView.swift */,
-				1D10CF0D2B32F9BA003C3F67 /* MoodLogView_Alt.swift */,
-				1D5E6DA12B2C98D6002FA055 /* MoodLogView.swift */,
+				1D50F19A2B3D835E006EA110 /* HomeView.swift */,
+				1D50F19C2B3DB713006EA110 /* LogMoodView.swift */,
+				1D50F1A02B3DC551006EA110 /* MoodLogView.swift */,
+				1D50F1A32B3EC203006EA110 /* DataView.swift */,
+				1D2E789F2B3C22A80002136F /* DatabaseManager.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,6 +192,9 @@
 			dependencies = (
 			);
 			name = "Mood v2";
+			packageProductDependencies = (
+				1D2E789D2B3C1F8B0002136F /* SQLite */,
+			);
 			productName = "Mood v2";
 			productReference = 1D4D3AF22B2A090100E7BC9F /* Mood v2.app */;
 			productType = "com.apple.product-type.application";
@@ -265,6 +267,9 @@
 				Base,
 			);
 			mainGroup = 1D4D3AE92B2A090100E7BC9F;
+			packageReferences = (
+				1D2E789C2B3C1F8B0002136F /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+			);
 			productRefGroup = 1D4D3AF32B2A090100E7BC9F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -307,16 +312,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DFE3A762B2C450D007C22C0 /* HomeView.swift in Sources */,
+				1D50F1A42B3EC203006EA110 /* DataView.swift in Sources */,
+				1D50F19D2B3DB713006EA110 /* LogMoodView.swift in Sources */,
+				1D50F19B2B3D835E006EA110 /* HomeView.swift in Sources */,
+				1D2E78A02B3C22A80002136F /* DatabaseManager.swift in Sources */,
 				1D4D3AFF2B2A090500E7BC9F /* Persistence.swift in Sources */,
 				1D4D3AF82B2A090100E7BC9F /* ContentView.swift in Sources */,
 				1D4D3B022B2A090500E7BC9F /* Mood_v2.xcdatamodeld in Sources */,
 				1D4D3AF62B2A090100E7BC9F /* Mood_v2App.swift in Sources */,
-				1DFE3A6F2B2C43C5007C22C0 /* SignUpView.swift in Sources */,
-				1D5E6DA22B2C98D6002FA055 /* MoodLogView.swift in Sources */,
-				1DFE3A722B2C445D007C22C0 /* MoodTrackerView.swift in Sources */,
-				1D10CF0E2B32F9BA003C3F67 /* MoodLogView_Alt.swift in Sources */,
-				1DFE3A6D2B2C4319007C22C0 /* SignInView.swift in Sources */,
+				1D50F1A12B3DC551006EA110 /* MoodLogView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +489,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -516,6 +521,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -641,6 +647,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1D2E789C2B3C1F8B0002136F /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1D2E789D2B3C1F8B0002136F /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1D2E789C2B3C1F8B0002136F /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		1D4D3B002B2A090500E7BC9F /* Mood_v2.xcdatamodeld */ = {

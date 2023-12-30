@@ -9,6 +9,12 @@ import SwiftUI
 
 @main
 struct Mood_v2App: App {
+    @StateObject private var databaseManager = DatabaseManager.shared
+    
+    init(){
+        UINavigationBar.setAnimationsEnabled(false)
+    }
+    
     var body: some Scene {
             WindowGroup {
                 ContentView()

@@ -206,12 +206,12 @@ struct HomeView: View {
                                     }
                                 }
                                 .onAppear {
-                                    print("Chart appeared. Fetching mood data...")
+//                                    print("Chart appeared. Fetching mood data...")
                                     let fetchedData = databaseManager.fetchMoodDataForWeek()
-                                    print("Fetched \(fetchedData.count) rows from the database.")
+//                                    print("Fetched \(fetchedData.count) rows from the database.")
                                 }
                                 .onChange(of: databaseManager.moodData) { _ in
-                                    print("Mood data changed. Count: \(databaseManager.moodData.count)")
+//                                    print("Mood data changed. Count: \(databaseManager.moodData.count)")
                                 }
                                 .chartLegend(.hidden)
                                 .frame(height: 80)

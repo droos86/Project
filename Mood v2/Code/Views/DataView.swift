@@ -24,7 +24,6 @@ struct DataView: View {
                     .onDelete(perform: deleteMood)
                 }
                 .onAppear {
-                    // Fetch mood data when the view appears
 //                    print("Fetching data...")
                     databaseManager.fetchAllMoodData()
 //                    print("DataView displayed. Mood data count: \(databaseManager.moodData.count)")
@@ -97,10 +96,8 @@ struct DataView: View {
     
     
     private func deleteAllMoodDataFromDatabase() {
-        // Modify the delete method to fetch data after deletion
         DatabaseManager.shared.deleteAllMoodData()
         
-        // Fetch data again to refresh the view
         DispatchQueue.main.async {
             self.databaseManager.fetchAllMoodData()
         }
@@ -110,7 +107,6 @@ struct DataView: View {
     private func createTestDataFor2023() {
         DatabaseManager.shared.createTestData()
         
-        // Fetch data again to refresh the view
         DispatchQueue.main.async {
             self.databaseManager.fetchAllMoodData()
         }
@@ -121,10 +117,8 @@ struct DataView: View {
         for index in offsets {
             let moodToDelete = databaseManager.moodData[index]
             
-            // Delete the mood entry from the database
             databaseManager.deleteMoodEntry(moodToDelete)
 
-            // Remove the mood entry from the UI
             databaseManager.moodData.remove(at: index)
         }
     }

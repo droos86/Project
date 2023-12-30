@@ -61,13 +61,13 @@ struct MoodLogView: View {
                             }
                         }
                         .onAppear {
-                            print("Chart appeared. Fetching mood data...")
+//                            print("Chart appeared. Fetching mood data...")
                             let fetchedData = databaseManager.fetchMoodDataForWeek()
 //                            let fetchedData = databaseManager.fetchAllMoodData()
-                            print("Fetched \(fetchedData.count) rows from the database.")
+//                            print("Fetched \(fetchedData.count) rows from the database.")
                         }
                         .onChange(of: databaseManager.moodData) { _ in
-                            print("Mood data changed. Count: \(databaseManager.moodData.count)")
+//                            print("Mood data changed. Count: \(databaseManager.moodData.count)")
                         }
                         .chartScrollableAxes(.horizontal)
                         .chartXVisibleDomain(length: 3600 * 24 * numberOfDisplayDays)
@@ -136,7 +136,6 @@ struct MoodLogView: View {
                         }
                         .padding(.bottom, 10)
                         
-                        // Automate with analyses of mood data patterns
                         ZStack {
                             Rectangle()
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)

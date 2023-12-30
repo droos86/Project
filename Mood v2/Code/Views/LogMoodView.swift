@@ -57,14 +57,12 @@ struct LogMoodView: View {
                     
                     Spacer()
                     
-                    // Display current value
                     Text("\(moodDescriptions[Int(moodRating)] ?? "")")
                         .font(.title2)
                         .bold()
                         .foregroundColor(.white)
                         .padding(.bottom, 10)
                     
-                    // Slider
                     Slider(value: $moodRating, in: 1...5, step: 1)
                         .accentColor(.gray)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
@@ -74,7 +72,6 @@ struct LogMoodView: View {
                             }
                         }
                     
-                    // Slider labels
                     HStack {
                         Text("Very unpleasant")
                             .font(.subheadline)
@@ -191,7 +188,6 @@ struct LogMoodView: View {
     
     private func logMoodToDatabase() {
         print("Logging mood to database")
-        // Use DatabaseManager to log mood to the database
         let user_id = 1 // Replace with actual user ID
         DatabaseManager.shared.logMood(user_id: user_id, mood: Int(moodRating))
     }

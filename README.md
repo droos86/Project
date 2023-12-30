@@ -9,7 +9,7 @@ Apart from SQLite, I never used any of the aforementioned tools before, so it wa
 
 Mood has **three main features:**
 1. Users can log how they have felt overall from very pleasant to very unpleasant on a daily basis with an intuitive slider.
-2. Users can track their mood over time by weeks, months, and years to understand your progress.
+2. Users can track their mood over time by weeks, months, and years to understand their progress.
 3. User can use analytics-based insights and recommendations to improve their mood over time (this feature will come in the next version of my app).
 
 The app has **5 main views** and a separate **DatabaseManager file** to manage everything related to the SQL database.
@@ -47,7 +47,7 @@ LogMoodView was great to get familiar with additional SwiftUI elements like the 
 
 MoodLogView has **three main purposes:**
 
-First, it uses SwiftCharts to visulize moods logged by users in a chart using point and line marks (in the next version of this app, the point marks will be colored in the respective moods colors from the LogMoodView). The chart fetches data from the SQL database and populates the chart with a "For each" loop. The chart allows users to see how their mood has developed over time. The current version visualizes mood data for a full week by days (visualizing mood data for a full month by weeks and for a full year by month will come in the next version of this app). The chart currently displays data for the week of 25-31 Dec 2023. Functionality to scroll through the chart horizontally to display additional weeks has already been put in place (the required database-related functions to fetch data for a longer time period will come in the next version of this app).
+First, it uses SwiftCharts to visulize moods logged by users in a chart using point and line marks (in the next version of this app, the point marks will be colored in the respective moods colors from the LogMoodView). The chart fetches data from the SQL database and populates the chart with a "For each" loop. The chart allows users to see how their mood has developed over time. The current version visualizes mood data for a full week by days (visualizing mood data for a full month by weeks and for a full year by month will come in the next version of this app). The functionality to switch between these different time horizons has already been put in place with a picker. The chart currently displays data for the week of 25-31 Dec 2023. Functionality to scroll through the chart horizontally to display additional weeks has already been put in place (the required database-related functions to fetch data for a longer time period will come in the next version of this app).
 
 Second, it also shows the two placeholder highlights cards supposed to show analytics-based insights and recommendations on how to improve users' moods (once this feature is added). The ideas is to use statictics (and later machine learning) to understand a user's mood patterns over time and provide recommendations on how to improve their mood.
 
@@ -63,7 +63,7 @@ First, it shows users a list of the mood data logged in the SQL database includi
 
 Second and primarly for app testing purposes, it provides the ability to delete all mood data from the SQL database that has been stored so far. When the "Delete all data button" is tapped, an alert is being shown to double-check users' intention in order to prevent users from accidentally deleting all data.
 
-Third and again primarily for app testing purposes, it provides the ability to create a test mood data set. When tapping the "Create new data set" button, any previously stores mood data is deleted first and then randomized mood data is stored in the SQL database for the full month of December 2023. Both  MoodLogView as well as HomeView automatically update the SwiftCharts when a new data set has been created.
+Third and again primarily for app testing purposes, it provides the ability to create a test mood data set. When tapping the "Create new data set" button, any previously stored mood data is deleted first and then randomized mood data is stored in the SQL database for the full month of December 2023. Both  MoodLogView as well as HomeView automatically update the SwiftCharts when a new data set has been created.
 
 DataView was great to get familiar with building lists with "For each" loops, as well as with handling SQL database queries that allow to delete or create data.
 
@@ -71,7 +71,7 @@ DataView was great to get familiar with building lists with "For each" loops, as
 
 Everything realted to the SQL database is managed in the DatabaseManager file.
 Main functions include:
-1. Opening the database, creating a moodTracker table with the columns outlined under LogMoodView, and initializing the the database connection.
+1. Opening the database, creating a moodTracker table with the columns outlined under LogMoodView, and initializing the database connection.
 2. Defining the struct MoodData.
 3. Logging a mood to the database table based on users' input.
 4. Fetching mood data from the database table to display it in the charts and the list.

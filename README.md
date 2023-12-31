@@ -39,7 +39,7 @@ HomeView also introduces a toolbar at the top and one at the bottom. The bottom 
 
 LogMoodView allows users to indicate how they have felt overall on any given day from very pleasant to very unpleasant using a SwiftUI slider. The blurred sphere changes its color based on the selected mood providing an additional graphical clue for how the users might feel. 
 
-When users tap the "Log mood" button, the selected moods gets inserted into a SQL database table along with a unique ID, a default user ID (i.e. 1), a timestampe of the current date and time, as well as the mood being an integer from 1 (very unpleasant) to 5 (very pleasant).
+When users tap the "Log mood" button, the selected moods gets inserted into a SQL database table along with a unique ID, a default user ID (i.e. 1), a timestamp of the current date and time, as well as the mood being an integer from 1 (very unpleasant) to 5 (very pleasant).
 
 LogMoodView was great to get familiar with additional SwiftUI elements like the slider, @State variables and functions to control the color of the blurred sphere depending on the mood. 
 

@@ -3,9 +3,7 @@
 #### Description:
 ##### Summary
 
-Mood is an iOS app inspired by existing health and mental wellness apps. It is designed and developed by Daniel Roos from Germany mainly using Xcode, SwiftUI, SQLite for data management, and SwiftCharts for data visualization.
-
-Apart from SQLite, I never used any of the aforementioned tools before, so it was a great additional learning experience that taking CS50 enabled.
+My CS50 final project Mood is an iOS app inspired by existing health and mental wellness apps. It is designed and developed by myself mainly using Xcode, Swift, SwiftUI, SQLite.swift for data management, and SwiftCharts for data visualization.
 
 Mood has **three main features:**
 1. Users can log how they have felt overall from very pleasant to very unpleasant on a daily basis with an intuitive slider.
@@ -27,7 +25,7 @@ This view was great to get familiar with SwiftUI's main UI principles ZStack, VS
 
 ###### HomeView
 
-HomeView continues using the blurred sphere as a graphical continuation and has **two main purposes:**
+HomeView continues using the blurred sphere for graphical reference and has **two main purposes:**
 
 First, it provides the user with information about the app and its main features.
 
@@ -39,7 +37,7 @@ HomeView also introduces a toolbar at the top and one at the bottom. The bottom 
 
 LogMoodView allows users to indicate how they have felt overall on any given day from very pleasant to very unpleasant using a SwiftUI slider. The blurred sphere changes its color based on the selected mood providing an additional graphical clue for how the users might feel. 
 
-When users tap the "Log mood" button, the selected moods gets inserted into a SQL database table along with a unique ID, a default user ID (i.e. 1), a timestampe of the current date and time, as well as the mood being an integer from 1 (very unpleasant) to 5 (very pleasant).
+When users tap the "Log mood" button, the selected moods gets inserted into a SQL database table along with a unique ID, a default user ID (i.e. 1), a timestamp of the current date and time, as well as the mood being an integer from 1 (very unpleasant) to 5 (very pleasant).
 
 LogMoodView was great to get familiar with additional SwiftUI elements like the slider, @State variables and functions to control the color of the blurred sphere depending on the mood. 
 
@@ -69,7 +67,7 @@ DataView was great to get familiar with building lists with "For each" loops, as
 
 ##### DatabaseManager file
 
-Everything realted to the SQL database is managed in the DatabaseManager file.
+Everything related to the SQL database is managed in the DatabaseManager file.
 Main functions include:
 1. Opening the database, creating a moodTracker table with the columns outlined under LogMoodView, and initializing the database connection.
 2. Defining the struct MoodData.
@@ -80,3 +78,8 @@ Main functions include:
 
 It was great to strengthen my SQL knowledge acquired through CS50.
 
+##### Conclusion & acknowledgements
+
+Overall, designing and developing Mood was a lot of fun and a great additional learning experience enabled by CS50.
+
+Apart from great resources for and the help from other Apple developers as well as help from the Stack Overflow community two special shoutouts go to: The people behind SQLite.swift and Karin Prater for great youtube tutorials on using SwiftCharts.

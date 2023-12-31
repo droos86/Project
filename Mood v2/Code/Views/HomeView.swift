@@ -50,7 +50,7 @@ struct HomeView: View {
                                 Divider()
                                     .padding(.horizontal, -16)
                                 
-                                Text("Mood is a CS50 final project inspired by existing health and mental wellness apps. It is designed and developed by Daniel Roos from Germany mainly using Xcode, SwiftUI, SQLite for data management, and SwiftCharts for data visualization.")
+                                Text("Mood is a CS50 final project inspired by existing health and mental wellness apps. It is designed and developed by Daniel Roos from Germany mainly using Xcode, Swift, SwiftUI, SQLite.swift for data management, and SwiftCharts for data visualization.")
                                     .font(.caption)
                                     .foregroundColor(.white)
                                     .padding(.top, 5)

@@ -3,7 +3,7 @@
 #### Description:
 ##### Summary
 
-Mood is an iOS app inspired by existing health and mental wellness apps. It is designed and developed by Daniel Roos from Germany mainly using Xcode, Swift, SwiftUI, SQLite.swift for data management, and SwiftCharts for data visualization.
+My CS final project Mood is an iOS app inspired by existing health and mental wellness apps. It is designed and developed by Daniel Roos from Germany mainly using Xcode, Swift, SwiftUI, SQLite.swift for data management, and SwiftCharts for data visualization.
 
 Mood has **three main features:**
 1. Users can log how they have felt overall from very pleasant to very unpleasant on a daily basis with an intuitive slider.

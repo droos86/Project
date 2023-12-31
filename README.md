@@ -25,7 +25,7 @@ This view was great to get familiar with SwiftUI's main UI principles ZStack, VS
 
 ###### HomeView
 
-HomeView continues using the blurred sphere as a graphical continuation and has **two main purposes:**
+HomeView continues using the blurred sphere for graphical reference and has **two main purposes:**
 
 First, it provides the user with information about the app and its main features.
 

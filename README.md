@@ -82,4 +82,4 @@ It was great to strengthen my SQL knowledge acquired through CS50.
 
 Overall, designing and developing Mood was a lot of fun and a great additional learning experience enabled by CS50.
 
-Apart from great resources for and the help from other Apple Developers as well as help from the Stackoverflow community a special shoutout goes to Karin Prater for great youtube tutorials on using SwiftCharts.
+Apart from great resources for and the help from other Apple developers as well as help from the Stack Overflow community a special shoutout goes to Karin Prater for great youtube tutorials on using SwiftCharts.

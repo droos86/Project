@@ -78,3 +78,6 @@ Main functions include:
 
 It was great to strengthen my SQL knowledge acquired through CS50.
 
+Overall, designing and developing Mood was a lot of fun and a great additional learning experience enabled by CS50.
+
+Apart from great resources at Apple Developer and help from the Stackoverflow community a special shoutout goes to Karin Prater for great youtube tutorials on using SwiftCharts.

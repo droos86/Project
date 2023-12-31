@@ -83,7 +83,7 @@ struct HomeView: View {
                                             .foregroundColor(.gray)
                                             .labelStyle(.iconOnly)
                                         
-                                        Text("Log how you have felt overall from very pleasant to very unpleasant on a daily basis with an intuitive slider.")
+                                        Text("Log how you have felt overall from very pleasant to very unpleasant on a daily basis.")
                                             .font(.caption)
                                             .foregroundColor(.white)
                                     }

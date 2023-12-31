@@ -1,5 +1,5 @@
 # MOOD
-#### Video Demo: https://youtu.be/nr17DJ1u4JM
+#### Video Demo: 
 #### Description:
 ##### Summary
 
